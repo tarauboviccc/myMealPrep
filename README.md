@@ -1,4 +1,4 @@
-# My Personal Project
+# My MealPrep
 
 ## Description 
 
@@ -9,3 +9,12 @@ One list will contain groceries with an expiration date of 2 weeks, and the seco
 
 This application is meant to be used by everyone, from students to family households, so it can ease the job of taking care of food and reduce its waste in these settings.
 This project started as an idea to help students collect items for their weekly and monthly grocery shopping runs, to help them save money and reduce food waste. 
+
+## User Stories
+
+<ul>
+  <li>As a user, I want to be able to add a meal to my meal plan </li>
+  <li>As a user, I want to be able to view the lists of groceries separated by expiration date </li>
+  <li>As a user, I want to be able to view the list of meals I selected for following time period </li>
+  <li>As a user, I want to be able to delete a grocery list after expiration date passes </li>
+</ul>
