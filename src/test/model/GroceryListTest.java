@@ -89,7 +89,4 @@ public class GroceryListTest {
         testGroceryList.removeGrocery("cheese");
         assertEquals(g1, testGroceryList.getGroceries());
     }
-
-
-
 }

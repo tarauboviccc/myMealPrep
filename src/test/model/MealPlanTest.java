@@ -20,13 +20,13 @@ public class MealPlanTest {
         foodOne.add("pasta");
         foodOne.add("cheese");
         foodOne.add("milk");
-        testMeal1 = new Meal("mac and cheese", 3, foodOne);
+        testMeal1 = new Meal("macNcheese", 3, foodOne);
         foodTwo.add("tomato");
         foodTwo.add("cucumber");
         foodTwo.add("feta cheese");
         foodTwo.add("olive");
         foodTwo.add("pepper");
-        testMeal2 = new Meal("greek salad", 5, foodTwo);
+        testMeal2 = new Meal("greekSalad", 5, foodTwo);
         testMealPlan = new MealPlan(2);
     }
 
@@ -46,5 +46,15 @@ public class MealPlanTest {
         testMealPlan.addMeal(testMeal2);
         m1.add(testMeal2);
         assertEquals(m1, testMealPlan.getMeals());
+    }
+
+    @Test
+    void testPrintMealPlan() {
+        List<String> g2 = new ArrayList<String>();
+        g2.add("Meal [0]: macNcheese");
+        g2.add("Meal [1]: greekSalad");
+        testMealPlan.addMeal(testMeal1);
+        testMealPlan.addMeal(testMeal2);
+        assertEquals(g2, testMealPlan.printMealPlan());
     }
 }
