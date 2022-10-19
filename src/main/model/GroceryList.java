@@ -13,8 +13,8 @@ public class GroceryList {
      *          number of groceries is set to 0
      */
     public GroceryList() {
-        this.groceriesList = new ArrayList<>();
-        this.numberOfGroceries = 0;
+        groceriesList = new ArrayList<>();
+        numberOfGroceries = 0;
     }
 
     /*
@@ -43,17 +43,24 @@ public class GroceryList {
         }
     }
 
-    public void printout() {
+    /*
+     * EFFECTS: returns a list of organized strings of the groceries
+     */
+    public List<String> printGroceryList() {
+        List<String> tempPrint = new ArrayList<>();
+
         for (int i = 0; i < getNumberOfGroceries(); i++) {
-            System.out.println("Grocery" + " [" + i + "]: " + getGroceries().get(i));
+            tempPrint.add("Groceries" + " [" + i + "]: " + getGroceries().get(i));
         }
+
+        return tempPrint;
     }
 
     public int getNumberOfGroceries() {
-        return this.numberOfGroceries;
+        return numberOfGroceries;
     }
 
     public List<String> getGroceries() {
-        return this.groceriesList;
+        return groceriesList;
     }
 }

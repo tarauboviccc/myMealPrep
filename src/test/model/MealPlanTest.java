@@ -45,4 +45,9 @@ public class MealPlanTest {
         m1.add(testMeal2);
         assertEquals(m1, testMealPlan.getMeals());
     }
+
+    /*@Test
+    void testPrintout() {
+        testMealPlan.addMeal(testMeal1);
+    }*/
 }

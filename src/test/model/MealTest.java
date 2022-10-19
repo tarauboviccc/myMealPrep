@@ -18,18 +18,18 @@ class MealTest {
         foodOne.add("pasta");
         foodOne.add("cheese");
         foodOne.add("milk");
-        testMeal1 = new Meal("mac and cheese", 3, foodOne);
+        testMeal1 = new Meal("macaroni", 3, foodOne);
         foodTwo.add("tomato");
         foodTwo.add("cucumber");
         foodTwo.add("feta cheese");
         foodTwo.add("olive");
         foodTwo.add("pepper");
-        testMeal2 = new Meal("greek salad", 5, foodTwo);
+        testMeal2 = new Meal("salad", 5, foodTwo);
     }
 
     @Test
-    void testConstructor() {
-        assertEquals("mac and cheese", testMeal1.getMealName());
+    void testMealConstructor() {
+        assertEquals("macaroni", testMeal1.getMealName());
         assertEquals(3, testMeal1.getNumberOfIngredients());
         assertEquals(foodOne, testMeal1.getListOfIngredients());
     }

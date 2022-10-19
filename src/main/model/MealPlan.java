@@ -25,14 +25,16 @@ public class MealPlan {
         this.mealList.add(meal);
     }
 
-    public void printout() {
-
-        System.out.println("List of the meals entered: ");
+    /*
+     * EFFECTS: returns a list of organized strings of the meals
+     */
+    public List<String> printMealPlan() {
+        List<String> tempPrint = new ArrayList<>();
 
         for (int i = 0; i < getNumberOfMeals(); i++) {
-            System.out.println("Meal" + " [" + i + "]: " + getMeals().get(i).getMealName());
-
+            tempPrint.add("Meal" + " [" + i + "]: " + getMeals().get(i).getMealName());
         }
+        return tempPrint;
     }
 
     public List<Meal> getMeals() {

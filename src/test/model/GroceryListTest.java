@@ -53,6 +53,16 @@ public class GroceryListTest {
     }
 
     @Test
+    void testAddMultipleGrocery() {
+
+    }
+
+    @Test
+    void testPrintout() {
+        assertEquals("", "Grocery" + " [" + 1 + "]: " + "LambShank");
+    }
+
+    @Test
     void testRemoveGrocery() {
         List<String> g1 = new ArrayList<String>();
         g1.add("pasta");
@@ -61,5 +71,7 @@ public class GroceryListTest {
         testGroceryList.removeGrocery("cheese");
         assertEquals(g1, testGroceryList.getGroceries());
     }
+
+
 
 }

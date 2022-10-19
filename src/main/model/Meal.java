@@ -6,7 +6,7 @@ import java.util.*;
 public class Meal {
     private String mealName;                                                // meal's name
     private int numberOfIngredients;                                        // number of ingredients
-    private List<String> listOfIngredients = new ArrayList<String>();       // list of ingredients
+    private List<String> listOfIngredients = new ArrayList<String>();            // list of ingredients
 
     /*
      * REQUIRES: mealName has a non-zero length
@@ -21,14 +21,14 @@ public class Meal {
     }
 
     public String getMealName() {
-        return this.mealName;
+        return mealName;
     }
 
     public int getNumberOfIngredients() {
-        return this.numberOfIngredients;
+        return numberOfIngredients;
     }
 
     public List<String> getListOfIngredients() {
-        return this.listOfIngredients;
+        return listOfIngredients;
     }
 }
