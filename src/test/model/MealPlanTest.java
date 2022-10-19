@@ -32,6 +32,8 @@ public class MealPlanTest {
 
     @Test
     void testConstructor() {
+        List<Meal> list = new ArrayList();
+        assertEquals(list, testMealPlan.getMeals());
         assertEquals(2, testMealPlan.getNumberOfMeals());
     }
 
@@ -45,9 +47,4 @@ public class MealPlanTest {
         m1.add(testMeal2);
         assertEquals(m1, testMealPlan.getMeals());
     }
-
-    /*@Test
-    void testPrintout() {
-        testMealPlan.addMeal(testMeal1);
-    }*/
 }

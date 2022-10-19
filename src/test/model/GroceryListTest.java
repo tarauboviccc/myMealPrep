@@ -32,6 +32,8 @@ public class GroceryListTest {
 
     @Test
     void testConstructor() {
+        List<String> list = new ArrayList();
+        assertEquals(list, testGroceryList.getGroceries());
         assertEquals(0, testGroceryList.getNumberOfGroceries());
     }
 
@@ -54,12 +56,28 @@ public class GroceryListTest {
 
     @Test
     void testAddMultipleGrocery() {
-
+        List<String> g1 = new ArrayList<String>();
+        g1.add("pasta");
+        g1.add("cheese");
+        g1.add("milk");
+        testGroceryList.addGrocery(testMeal1.getNumberOfIngredients(), testMeal1.getListOfIngredients());
     }
 
     @Test
-    void testPrintout() {
-        assertEquals("", "Grocery" + " [" + 1 + "]: " + "LambShank");
+    void testPrintGroceryList() {
+        List<String> g2 = new ArrayList<String>();
+        g2.add("Groceries [0]: pasta");
+        g2.add("Groceries [1]: cheese");
+        g2.add("Groceries [2]: milk");
+        testGroceryList.addGrocery(testMeal1.getNumberOfIngredients(), testMeal1.getListOfIngredients());
+        assertEquals(g2, testGroceryList.printGroceryList());
+        g2.add("Groceries [3]: tomato");
+        g2.add("Groceries [4]: cucumber");
+        g2.add("Groceries [5]: feta cheese");
+        g2.add("Groceries [6]: olive");
+        g2.add("Groceries [7]: pepper");
+        testGroceryList.addGrocery(testMeal2.getNumberOfIngredients(), testMeal2.getListOfIngredients());
+        assertEquals(g2, testGroceryList.printGroceryList());
     }
 
     @Test
