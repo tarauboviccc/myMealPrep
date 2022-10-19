@@ -12,12 +12,21 @@ public class GroceryListTest {
     private GroceryList testGroceryList;
     private Meal testMeal1;
     private Meal testMeal2;
+    private List<String> foodOne = new ArrayList<String>();
+    private List<String> foodTwo = new ArrayList<String>();
 
     @BeforeEach
     void runBeforeTesting() {
-        testMeal1 = new Meal("mac and cheese", 3, List.of("pasta", "cheese", "milk"));
-        testMeal2 = new Meal("greek salad", 5,
-                List.of("tomato", "cucumber", "feta cheese", "olive", "pepper"));
+        foodOne.add("pasta");
+        foodOne.add("cheese");
+        foodOne.add("milk");
+        testMeal1 = new Meal("mac and cheese", 3, foodOne);
+        foodTwo.add("tomato");
+        foodTwo.add("cucumber");
+        foodTwo.add("feta cheese");
+        foodTwo.add("olive");
+        foodTwo.add("pepper");
+        testMeal2 = new Meal("greek salad", 5, foodTwo);
         testGroceryList = new GroceryList();
     }
 

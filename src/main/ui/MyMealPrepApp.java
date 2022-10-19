@@ -16,11 +16,12 @@ public class MyMealPrepApp {
     private GroceryList groceryList;
     private Scanner input;
     private int numberOfMeals;
-
+    private String command;
 
     public MyMealPrepApp() {
         runMealPrep();
     }
+
 
     public void runMealPrep() {
         System.out.println("Please enter the number of meals you would like to do the grocery run for: ");
@@ -28,10 +29,13 @@ public class MyMealPrepApp {
         numberOfMeals = input.nextInt();
         mealPlan = new MealPlan(numberOfMeals);
         groceryList = new GroceryList();
-        String command;
 
         enterYourMeals(numberOfMeals);
 
+        displayMeals();
+    }
+
+    void displayMeals() {
         System.out.println("Would you like to see the list of the meals you entered?");
         command = input.next();
         if (command.equals("yes")) {
@@ -40,13 +44,12 @@ public class MyMealPrepApp {
 
         System.out.println("Here is your grocery shopping lis1t: ");
         groceryList.printout();
-
         System.out.println("Would you like to delete some of the groceries from your list? (yes/no)");
         command = input.next();
+
         if (command.equals("no")) {
             exit(0);
         }
-
         while (command.equals("yes")) {
             System.out.println("Please write down the name of the grocery that you would like to delete of your"
                     + "groceries list");
@@ -55,7 +58,6 @@ public class MyMealPrepApp {
             System.out.println("Would you like to delete something else from your groceries list? (yes/no)");
             command = input.next();
         }
-
         System.out.println("Here is your updated grocery shopping list: ");
         groceryList.printout();
     }
