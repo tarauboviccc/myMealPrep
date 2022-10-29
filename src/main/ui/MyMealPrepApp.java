@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Meal prep application
+// Meal prep application enabling the functions of user' stories
 public class MyMealPrepApp {
     private static final String JSON_STORE = "./data/grocerylist.json";
     private JsonWriter jsonWriter;

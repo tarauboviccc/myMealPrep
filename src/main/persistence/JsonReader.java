@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
-// citations: used the example of JsonReader given for the JsonSerializationDemo
+// CITATIONS: used the example of JsonReader given for the JsonSerializationDemo
 // Represents a reader that reads grocery list from JSON data stored in file
 public class JsonReader {
     private String source;

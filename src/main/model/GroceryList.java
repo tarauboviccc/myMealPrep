@@ -79,7 +79,7 @@ public class GroceryList implements Writable {
         return groceriesList;
     }
 
-    // Citations: used toJson function given in the example
+    // CITATIONS: used toJson function given in the example
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
