@@ -8,7 +8,7 @@ import java.util.*;
 
 // Represents a grocery list containing number of groceries and list of those groceries
 // the list of the groceries is formed from adding each of meal's list of ingredients
-public class GroceryList implements Writable {
+public class GroceryList {
     private int numberOfGroceries;                       //number of groceries
     private List<String> groceriesList;                  // list of groceries
 
@@ -79,22 +79,4 @@ public class GroceryList implements Writable {
         return groceriesList;
     }
 
-    // CITATIONS: used toJson function given in the example
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("groceries", groceriesToJson());
-        return json;
-    }
-
-    // EFFECTS: returns groceries in this grocery list as a JSON array
-    private JSONArray groceriesToJson() {
-        JSONArray jsonArray = new JSONArray();
-
-        for (String t : groceriesList) {
-            jsonArray.put(t);
-        }
-
-        return jsonArray;
-    }
 }
