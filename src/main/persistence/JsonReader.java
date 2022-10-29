@@ -43,7 +43,7 @@ public class JsonReader {
     // EFFECTS: parses MealPlan from JSON object and returns it
     private MealPlan parseMealPlan(JSONObject jsonObject) {
         //String name = jsonObject.getString("name");
-        MealPlan mp = new MealPlan();
+        MealPlan mp = new MealPlan("My MealPlan");
         addMeals(mp, jsonObject);
         return mp;
     }
@@ -68,9 +68,9 @@ public class JsonReader {
         JSONArray loi = jsonObject.getJSONArray("listOfIngredients");
         List<String> listOfIngredients = new ArrayList<String>();
         for (Object i : loi) {
-            j++;
-            listOfIngredients.set(j, loi.get(j).toString());
+            listOfIngredients.add(i.toString());
         }
+
         Meal meal = new Meal(mealName, numberOfIngredients, listOfIngredients);
         mp.addMeal(meal);
     }

@@ -9,12 +9,14 @@ import java.util.*;
 // Represents a meal plan containing list of the meal user puts in
 public class MealPlan implements Writable {
     private List<Meal> mealList;                    // list of Meal
+    private String name;
 
     /*
      * EFFECTS: mealList is created and set to empty list;
      */
-    public MealPlan() {
+    public MealPlan(String name) {
         this.mealList = new ArrayList<>();
+        this.name = name;
     }
 
     /*
@@ -43,6 +45,10 @@ public class MealPlan implements Writable {
 
     public int getNumberOfMeals() {
         return this.mealList.size();
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     // CITATIONS: used example given in JsonSerializationDemo

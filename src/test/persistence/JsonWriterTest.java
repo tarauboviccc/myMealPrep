@@ -17,7 +17,7 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterInvalidFile() {
         try {
-            MealPlan mp = new MealPlan();
+            MealPlan mp = new MealPlan("My MealPlan");
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
@@ -29,7 +29,7 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterEmptyMealPlan() {
         try {
-            MealPlan mp = new MealPlan();
+            MealPlan mp = new MealPlan("My MealPlan");
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyMealPlan.json");
             writer.open();
             writer.write(mp);
@@ -45,11 +45,11 @@ class JsonWriterTest extends JsonTest {
         }
     }
 
-    /*
+
     @Test
     void testWriterGeneralMealPlan() {
         try {
-            MealPlan mp = new MealPlan();
+            MealPlan mp = new MealPlan("My MealPlan");
             List<String> foodOne = new ArrayList<String>();
             List<String> foodTwo = new ArrayList<String>();
             foodOne.add("pasta");
@@ -71,11 +71,13 @@ class JsonWriterTest extends JsonTest {
             mp = reader.read();
             List<Meal> meals = mp.getMeals();
             assertEquals(2, meals.size());
-            checkMeal("macaroni", 2, foodOne, meals.get(0));
+            checkMeal("macaroni", 3, foodOne, meals.get(0));
             checkMeal("salad", 5, foodTwo, meals.get(1));
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
 
-     */
     }
+}
+
+

@@ -28,7 +28,7 @@ public class MealPlanTest {
         foodTwo.add("olive");
         foodTwo.add("pepper");
         testMeal2 = new Meal("greekSalad", 5, foodTwo);
-        testMealPlan = new MealPlan();
+        testMealPlan = new MealPlan("My MealPlan");
     }
 
     @Test

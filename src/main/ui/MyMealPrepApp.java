@@ -37,7 +37,7 @@ public class MyMealPrepApp {
 
         System.out.println("Welcome to MyMealPrepApp!");
         input = new Scanner(System.in);
-        mp = new MealPlan();
+        mp = new MealPlan("My MealPlan");
         groceryList = new GroceryList();
 
         while (keepGoing) {

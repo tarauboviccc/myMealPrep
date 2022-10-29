@@ -39,12 +39,13 @@ class JsonReaderTest extends JsonTest {
         }
     }
 
-    /*
+
     @Test
     void testReaderGeneralMealPlan() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralMealPlan.json");
         try {
             MealPlan mp = reader.read();
+            assertEquals("My MealPlan", mp.getName());
             List<Meal> meals = mp.getMeals();
             assertEquals(2, meals.size());
             List<String> foodOne = new ArrayList<String>();
@@ -57,12 +58,10 @@ class JsonReaderTest extends JsonTest {
             foodTwo.add("feta cheese");
             foodTwo.add("olive");
             foodTwo.add("pepper");
-            checkMeal("macaroni", 2, foodOne, meals.get(0));
+            checkMeal("macaroni", 3, foodOne, meals.get(0));
             checkMeal("salad", 5, foodTwo, meals.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
-
-     */
 }
