@@ -38,6 +38,16 @@ public class GroceryListTest {
     }
 
     @Test
+    void testAddGroceryString() {
+        List<String> g1 = new ArrayList<String>();
+        g1.add("pasta");
+        testGroceryList.addGrocery("pasta");
+        assertEquals(g1, testGroceryList.getGroceries());
+        g1.add("milk");
+        testGroceryList.addGrocery("milk");
+        assertEquals(g1, testGroceryList.getGroceries());
+    }
+    @Test
     void testAddGrocery() {
         List<String> g1 = new ArrayList<String>();
         g1.add("pasta");
