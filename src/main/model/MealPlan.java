@@ -5,16 +5,14 @@ import java.util.*;
 // Represents a meal plan containing list of the meal user puts in, and the number of meals user puts in
 public class MealPlan {
     private List<Meal> mealList;                    // list of meal
-    private int numberOfMeals;                      // number of meals
 
     /*
      * REQUIRES: numberOfMeals has a non-zero length
      * EFFECTS: mealList is created and set to empty list;
-     *          number of meals is set to numberOfMeals
+     *          number of meals is set to 0
      */
-    public MealPlan(int numberOfMeals) {
+    public MealPlan() {
         this.mealList = new ArrayList<>();
-        this.numberOfMeals = numberOfMeals;
     }
 
     /*
@@ -22,7 +20,7 @@ public class MealPlan {
      * EFFECTS: meal is added to the mealList
      */
     public void addMeal(Meal meal) {
-        this.mealList.add(meal);
+        mealList.add(meal);
     }
 
     /*
@@ -31,8 +29,8 @@ public class MealPlan {
     public List<String> printMealPlan() {
         List<String> tempPrint = new ArrayList<>();
 
-        for (int i = 0; i < getNumberOfMeals(); i++) {
-            tempPrint.add("Meal" + " [" + i + "]: " + getMeals().get(i).getMealName());
+        for (int i = 0; i < mealList.size(); i++) {
+            tempPrint.add("Meal" + " [" + i + "]: " + mealList.get(i).getMealName());//getMeals().get(i).getMealName());
         }
         return tempPrint;
     }
@@ -42,6 +40,6 @@ public class MealPlan {
     }
 
     public int getNumberOfMeals() {
-        return this.numberOfMeals;
+        return this.mealList.size();
     }
 }

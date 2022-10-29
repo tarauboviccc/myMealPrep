@@ -4,19 +4,25 @@ import model.GroceryList;
 import model.Meal;
 import model.MealPlan;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.System.exit;
-
 // Meal prep application
 public class MyMealPrepApp {
-    private MealPlan mealPlan;
+    private static final String JSON_STORE = "./data/grocerylist.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private MealPlan mp;
     private GroceryList groceryList;
     private Scanner input;
-    private int numberOfMeals;
     private String command;
+    private Meal newMeal;
 
     // EFFECTS: runs the meal prep application
     public MyMealPrepApp() {
@@ -26,86 +32,139 @@ public class MyMealPrepApp {
     // MODIFIES: this
     // EFFECTS: processes user input
     public void runMealPrep() {
-        System.out.println("Please enter the number of meals you would like to do the grocery run for: ");
+        boolean keepGoing = true;
+        String command = null;
+
+        System.out.println("Welcome to MyMealPrepApp!");
         input = new Scanner(System.in);
-        numberOfMeals = input.nextInt();
-        mealPlan = new MealPlan(numberOfMeals);
+        mp = new MealPlan();
         groceryList = new GroceryList();
 
-        enterYourMeals(numberOfMeals);
+        while (keepGoing) {
 
-        displayMealsAndGroceryList();
+            displayMenu();
+            command = input.next();
+
+            if (command.equals("8")) {
+                keepGoing = false;
+            } else {
+                doCommand(command);
+            }
+        }
+    }
+
+    // EFFECTS: displays a menu of options user can pick
+    private void displayMenu() {
+        System.out.println("\nSelect one of the options from the menu:");
+        System.out.println("\t1 -> enter a meal, number of its ingredients and list of ingredients needed for its "
+                + "preparation");
+        System.out.println("\t2 -> display a list of meals entered");
+        System.out.println("\t3 -> display a grocery list");
+        System.out.println("\t4 -> delete an item from grocery list");
+        System.out.println("\t5 -> add an item to the grocery list");
+        System.out.println("\t6 -> save my grocery list to a file");
+        System.out.println("\t7 -> load a grocery list from a file");
+        System.out.println("\t8 -> quit the application");
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input
-    void displayMealsAndGroceryList() {
-        System.out.println("Would you like to see the list of the meals you entered?");
-        command = input.next();
-        if (command.equals("yes")) {
-            for (int i = 0; i < mealPlan.printMealPlan().size(); i++) {
-                System.out.println(mealPlan.printMealPlan().get(i));
-            }
+    // EFFECTS: processes user's input
+    private void doCommand(String command) {
+        if (command.equals("1")) {
+            newMeal = enterYourMeal();
+            mp.addMeal(newMeal);
+            groceryList.addGrocery(newMeal.getNumberOfIngredients(), newMeal.getListOfIngredients());
+        } else if (command.equals("2")) {
+            displayMeals();
+        } else if (command.equals("3")) {
+            displayGroceryList();
+        } else if (command.equals("4")) {
+            deleteItemFromGroceryList();
+        } else if (command.equals("5")) {
+            addItemToGroceryList();
+        } else if (command.equals("6")) {
+            saveGroceryList();
+        } else if (command.equals("7")) {
+            loadGroceryList();
         }
+    }
 
+    // EFFECTS: displays the list of mealPlan meal names (list of String)
+    private void displayMeals() {
+        System.out.println("The list of the meals you entered: ");
+        for (int i = 0; i < mp.printMealPlan().size(); i++) {
+            System.out.println(mp.printMealPlan().get(i));
+        }
+    }
+
+    // EFFECTS: displays grocery list from the input entered
+    private void displayGroceryList() {
         System.out.println("Here is your grocery shopping list: ");
-
         for (int i = 0; i < groceryList.printGroceryList().size(); i++) {
             System.out.println(groceryList.printGroceryList().get(i));
         }
-        System.out.println("Would you like to delete some of the groceries from your list? (yes/no)");
-
-        checkIfCorrection();
     }
 
-
     // MODIFIES: this
-    // EFFECTS: processes user input if they want to make
-    //          additional changes to grocery list
-    public void checkIfCorrection() {
-        String command;
+    // EFFECTS: deletes an item (String) from the grocery list
+    private void deleteItemFromGroceryList() {
+        System.out.println("Write down the name of the item you would like to delete:");
         command = input.next();
-
-        if (command.equals("no")) {
-            exit(0);
-        }
-        while (command.equals("yes")) {
-            System.out.println("Please write down the name of the grocery that you would like to delete of your"
-                    + "groceries list");
-            command = input.next();
-            groceryList.removeGrocery(command);
-            System.out.println("Would you like to delete something else from your groceries list? (yes/no)");
-            command = input.next();
-        }
-        System.out.println("Here is your updated grocery shopping list: ");
-        for (int i = 0; i < groceryList.printGroceryList().size(); i++) {
-            System.out.print(groceryList.printGroceryList().get(i));
-        }
+        groceryList.removeGrocery(command);
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input of meals and their specifics and adds them to meal plan
-    //          as well as adds groceries to the list
-    public void enterYourMeals(int numberOfMeals) {
+    // EFFECTS: adds an item (String) to the grocery list
+    private void addItemToGroceryList() {
+        System.out.println("Write down the name of the item you would like to add:");
+        command = input.next();
+        groceryList.addGrocery(command);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: processes user input of new meal and its ingredients
+    //          adds new meal to the mealPlan
+    //          adds ingredients to the grocery list
+    private Meal enterYourMeal() {
         String mealName;
         int numberOfIngredients;
+        List<String> listOfIngredients = new ArrayList<String>();
+        Meal newMeal;
 
-        for (int i = 0; i < numberOfMeals; i++) {
-            List<String> listOfIngredients = new ArrayList<String>();
-            Meal newMeal;
+        System.out.println("Enter the name of the meal [1 string]: ");
+        mealName = input.next();
+        System.out.println("Enter the number of the ingredients you need to prepare the meal: ");
+        numberOfIngredients = input.nextInt();
+        System.out.println("Please enter the list of the ingredients of your meal: ");
+        for (int j = 0; j < numberOfIngredients; j++) {
+            listOfIngredients.add(input.next());
+        }
 
-            System.out.println("Please enter the name of the meal: ");
-            mealName = input.next();
-            System.out.println("Please enter the number of the ingredients the meal is made of: ");
-            numberOfIngredients = input.nextInt();
-            System.out.println("Please enter the list of the ingredients of your meal: ");
-            for (int j = 0; j < numberOfIngredients; j++) {
-                listOfIngredients.add(input.next());
-            }
+        return (new Meal(mealName, numberOfIngredients, listOfIngredients));
+    }
 
-            newMeal = new Meal(mealName, numberOfIngredients, listOfIngredients);
-            mealPlan.addMeal(newMeal);
-            groceryList.addGrocery(newMeal.getNumberOfIngredients(), newMeal.getListOfIngredients());
+    // citations: used an example given in the WorkRoomApp for the SaveWorkRoom function
+    // EFFECTS: save the GroceryList to file
+    private void saveGroceryList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(groceryList);
+            jsonWriter.close();
+            System.out.println("Saved your grocery list to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    //citations: used an example given in the WorkRoomApp for the loadWorkRoom function
+    // MODIFIES: this
+    // EFFECTS: loads grocery list from file
+    private void loadGroceryList() {
+        try {
+            groceryList = jsonReader.read();
+            System.out.println("Loaded grocery list from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

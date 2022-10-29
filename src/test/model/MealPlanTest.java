@@ -15,6 +15,7 @@ public class MealPlanTest {
     private List<String> foodOne = new ArrayList<String>();
     private List<String> foodTwo = new ArrayList<String>();
 
+
     @BeforeEach
     void runBeforeEachTesting() {
         foodOne.add("pasta");
@@ -27,14 +28,13 @@ public class MealPlanTest {
         foodTwo.add("olive");
         foodTwo.add("pepper");
         testMeal2 = new Meal("greekSalad", 5, foodTwo);
-        testMealPlan = new MealPlan(2);
+        testMealPlan = new MealPlan();
     }
 
     @Test
     void testConstructor() {
         List<Meal> list = new ArrayList();
         assertEquals(list, testMealPlan.getMeals());
-        assertEquals(2, testMealPlan.getNumberOfMeals());
     }
 
     @Test

@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
 import java.util.*;
 
 // Represents a grocery list containing number of groceries and list of those groceries
 // the list of the groceries is formed from adding each of meal's list of ingredients
-public class GroceryList {
+public class GroceryList implements Writable {
     private int numberOfGroceries;                       //number of groceries
     private List<String> groceriesList;                  // list of groceries
 
@@ -27,6 +31,17 @@ public class GroceryList {
     public void removeGrocery(String grocery) {
         groceriesList.remove(grocery);
         numberOfGroceries--;
+    }
+
+    /*
+     * REQUIRES: grocery is a non-zero String
+     * MODIFIES: this
+     * EFFECTS: user's String input is added from the groceries list
+     *          number of groceries increased for 1 because one grocery is added
+     */
+    public void addGrocery(String grocery) {
+        groceriesList.add(grocery);
+        numberOfGroceries++;
     }
 
     /*
@@ -62,5 +77,24 @@ public class GroceryList {
 
     public List<String> getGroceries() {
         return groceriesList;
+    }
+
+    // Citations: used toJson function given in the example
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("groceries", groceriesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns groceries in this grocery list as a JSON array
+    private JSONArray groceriesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (String t : groceriesList) {
+            jsonArray.put(t);
+        }
+
+        return jsonArray;
     }
 }
