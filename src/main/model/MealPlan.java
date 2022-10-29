@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // Represents a meal plan containing list of the meal user puts in
-public class MealPlan {
+public class MealPlan implements Writable {
     private List<Meal> mealList;                    // list of Meal
 
     /*
@@ -39,5 +43,23 @@ public class MealPlan {
 
     public int getNumberOfMeals() {
         return this.mealList.size();
+    }
+
+    // CITATIONS: used example given in JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("meals", mealsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this MealPlan as a JSON array
+    private JSONArray mealsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Meal t : mealList) {
+            jsonArray.put(t.toJson());
+        }
+        return jsonArray;
     }
 }

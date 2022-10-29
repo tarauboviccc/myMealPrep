@@ -62,8 +62,8 @@ public class MyMealPrepApp {
         System.out.println("\t3 -> display a grocery list");
         System.out.println("\t4 -> delete an item from grocery list");
         System.out.println("\t5 -> add an item to the grocery list");
-        System.out.println("\t6 -> save my grocery list to a file");
-        System.out.println("\t7 -> load a grocery list from a file");
+        System.out.println("\t6 -> save my meal list to a file");
+        System.out.println("\t7 -> load a meal list from a file");
         System.out.println("\t8 -> quit the application");
     }
 
@@ -83,9 +83,9 @@ public class MyMealPrepApp {
         } else if (command.equals("5")) {
             addItemToGroceryList();
         } else if (command.equals("6")) {
-            saveGroceryList();
+            saveMealPlan();
         } else if (command.equals("7")) {
-            loadGroceryList();
+            loadMealPlan();
         }
     }
 
@@ -144,11 +144,11 @@ public class MyMealPrepApp {
     }
 
     // citations: used an example given in the WorkRoomApp for the SaveWorkRoom function
-    // EFFECTS: save the GroceryList to file
-    private void saveGroceryList() {
+    // EFFECTS: save the MealPlan to file
+    private void saveMealPlan() {
         try {
             jsonWriter.open();
-            jsonWriter.write(groceryList);
+            jsonWriter.write(mp);
             jsonWriter.close();
             System.out.println("Saved your grocery list to " + JSON_STORE);
         } catch (FileNotFoundException e) {
@@ -158,11 +158,11 @@ public class MyMealPrepApp {
 
     //citations: used an example given in the WorkRoomApp for the loadWorkRoom function
     // MODIFIES: this
-    // EFFECTS: loads grocery list from file
-    private void loadGroceryList() {
+    // EFFECTS: loads meal plan from file
+    private void loadMealPlan() {
         try {
-            groceryList = jsonReader.read();
-            System.out.println("Loaded grocery list from " + JSON_STORE);
+            mp = jsonReader.read();
+            System.out.println("Loaded meal plan from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

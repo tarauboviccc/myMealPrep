@@ -1,0 +1,25 @@
+{
+
+  "meals": [
+    {
+      "mealName": "macaroni",
+      "numberOfIngredients": 3,
+      "listOfIngredients": [
+        "pasta",
+        "cheese",
+        "milk"
+      ]
+    },
+    {
+      "mealName": "salad",
+      "numberOfIngredients": 5,
+      "listOfIngredients": [
+        "tomato",
+        "cucumber",
+        "feta cheese",
+        "olive",
+        "pepper"
+      ]
+    }
+  ]
+}

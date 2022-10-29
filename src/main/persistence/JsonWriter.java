@@ -1,12 +1,13 @@
 package persistence;
 
-import model.GroceryList;
+import model.MealPlan;
+
 import org.json.JSONObject;
 
 import java.io.*;
 
-// CITATIONS: used the example of JsonWriter given for the JsonSerializationDemo
-// represents a writer that writes JSON representation of grocery list to file
+// CITATIONS: used example given in JsonWriter class in JsonSerializationDemo file
+// Represents a writer that writes JSON representation of MealPlan to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -25,9 +26,9 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of grocery list to file
-    public void write(GroceryList gl) {
-        JSONObject json = gl.toJson();
+    // EFFECTS: writes JSON representation of MealPlan to file
+    public void write(MealPlan mp) {
+        JSONObject json = mp.toJson();
         saveToFile(json.toString(TAB));
     }
 
@@ -43,4 +44,3 @@ public class JsonWriter {
         writer.print(json);
     }
 }
-

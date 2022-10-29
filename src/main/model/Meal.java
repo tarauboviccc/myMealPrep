@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // Represents a meal containing a name, number of ingredients needed for its preparation and list of that ingredients
-public class Meal {
+public class Meal implements Writable {
     private String mealName;                                                // meal's name
     private int numberOfIngredients;                                        // number of ingredients
     private List<String> listOfIngredients = new ArrayList<String>();            // list of ingredients
@@ -30,5 +33,15 @@ public class Meal {
 
     public List<String> getListOfIngredients() {
         return listOfIngredients;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("mealName", mealName);
+        json.put("numberOfIngredients", numberOfIngredients);
+        json.put("listOfIngredients", listOfIngredients);
+
+        return json;
     }
 }
