@@ -68,7 +68,8 @@ public class JsonReader {
         JSONArray loi = jsonObject.getJSONArray("listOfIngredients");
         List<String> listOfIngredients = new ArrayList<String>();
         for (Object i : loi) {
-            listOfIngredients.add(i.toString());
+            String nextIngredient = (String) i;
+            listOfIngredients.add(nextIngredient);
         }
 
         Meal meal = new Meal(mealName, numberOfIngredients, listOfIngredients);
