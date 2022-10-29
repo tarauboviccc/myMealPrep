@@ -16,6 +16,6 @@ shopping as well as reduce not needed purchases, which would also affect food wa
   <li>As a user, I want to be able to view the list of meals I have chosen for the certain period of time </li>
   <li>As a user, I want to be able to view the list of ingredients I need to buy for the grocery shopping </li>
   <li>As a user, I want to be able to delete a grocery item from list of groceries </li>
-  <li>As a user, I want to be able to save my grocery list to the file </li>
-  <li>As a user, I want to be able to be able to load my grocery list from file </li>
+  <li>As a user, I want to be able to save my meal list to the file </li>
+  <li>As a user, I want to be able to be able to load my meal list from file </li>
 </ul>
