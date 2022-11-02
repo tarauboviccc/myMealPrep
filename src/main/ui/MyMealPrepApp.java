@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 // Meal prep application enabling the functions of user' stories
 public class MyMealPrepApp {
-    private static final String JSON_STORE = "./data/grocerylist.json";
+    private static final String JSON_STORE = "./data/mp.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private MealPlan mp;
@@ -25,7 +25,7 @@ public class MyMealPrepApp {
     private Meal newMeal;
 
     // EFFECTS: runs the meal prep application
-    public MyMealPrepApp() {
+    public MyMealPrepApp() throws FileNotFoundException {
         runMealPrep();
     }
 
@@ -37,6 +37,8 @@ public class MyMealPrepApp {
 
         System.out.println("Welcome to MyMealPrepApp!");
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         mp = new MealPlan("My MealPlan");
         groceryList = new GroceryList();
 
