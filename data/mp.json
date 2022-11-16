@@ -1,8 +1,19 @@
-{"meals": [{
-    "listOfIngredients": [
-        "t",
-        "r"
-    ],
-    "mealName": "tara",
-    "numberOfIngredients": 2
-}]}
+{"meals": [
+    {
+        "listOfIngredients": [
+            "beef",
+            "tomato"
+        ],
+        "mealName": "spaghetti",
+        "numberOfIngredients": 2
+    },
+    {
+        "listOfIngredients": [
+            "tomato",
+            "cucumber",
+            "feta"
+        ],
+        "mealName": "greeksalad",
+        "numberOfIngredients": 3
+    }
+]}
