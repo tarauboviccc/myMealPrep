@@ -49,6 +49,20 @@ public class MealPlanTest {
     }
 
     @Test
+    void testRemoveMeal() {
+        testMealPlan.addMeal(testMeal1);
+        List<Meal> m1 = new ArrayList<Meal>();
+        //m1.add(testMeal1);
+        testMealPlan.removeMeal(testMeal1);
+        assertEquals(m1, testMealPlan.getMeals());
+        testMealPlan.addMeal(testMeal1);
+        testMealPlan.addMeal(testMeal2);
+        m1.add(testMeal2);
+        testMealPlan.removeMeal(testMeal1);
+        assertEquals(m1, testMealPlan.getMeals());
+    }
+
+    @Test
     void testPrintMealPlan() {
         List<String> g2 = new ArrayList<String>();
         g2.add("Meal [0]: macNcheese");
