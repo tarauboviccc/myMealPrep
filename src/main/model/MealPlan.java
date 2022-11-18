@@ -28,6 +28,15 @@ public class MealPlan implements Writable {
     }
 
     /*
+      MODIFIES: this
+      EFFECTS: meal is removed from the mealList
+     */
+    public void removeMeal(Meal meal) {
+        mealList.remove(meal);
+    }
+
+
+    /*
      * EFFECTS: returns a list of organized strings of the meals
      */
     public List<String> printMealPlan() {

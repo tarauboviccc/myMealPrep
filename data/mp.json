@@ -1,19 +1,5 @@
-{"meals": [
-    {
-        "listOfIngredients": [
-            "beef",
-            "tomato"
-        ],
-        "mealName": "spaghetti",
-        "numberOfIngredients": 2
-    },
-    {
-        "listOfIngredients": [
-            "tomato",
-            "cucumber",
-            "feta"
-        ],
-        "mealName": "greeksalad",
-        "numberOfIngredients": 3
-    }
-]}
+{"meals": [{
+    "listOfIngredients": ["dwnjdnw"],
+    "mealName": "salad",
+    "numberOfIngredients": 1
+}]}

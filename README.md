@@ -19,3 +19,12 @@ shopping as well as reduce not needed purchases, which would also affect food wa
   <li>As a user, I want to be able to save my meal list to the file </li>
   <li>As a user, I want to be able to be able to load my meal list from file </li>
 </ul>
+
+# Instructions for Grader
+
+- You can generate the first required event related to adding Xs to a Y by clicking button add Meal
+- You can generate the second required event related to adding Xs to a Y by clicking button remove meal from meal plan.
+- You can locate my visual component by clicking the button print grocery list, or just by adding the meals to meal plan
+- You can save the state of my application by clicking button save my meal plan
+- You can reload the state of my application by clicking button load my meal plan
+
