@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.GroceryList;
 import model.Meal;
 import model.MealPlan;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//represents Graphical User Interface for MyMealPrepApp
 public class GUI extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/mp.json";
     private JsonWriter jsonWriter;
@@ -112,6 +115,9 @@ public class GUI extends JFrame implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Thank you for using MyMealPrep!");
+            for (Event event : EventLog.getInstance()) {
+                System.out.println(event);
+            }
         }
     };
 
@@ -178,7 +184,7 @@ public class GUI extends JFrame implements ActionListener {
     public void setupGui() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
-        setPreferredSize(new Dimension(600, 600));
+        setPreferredSize(new Dimension(1000, 1000));
         //groceryList = new ArrayList<>();
 
         jpanel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));

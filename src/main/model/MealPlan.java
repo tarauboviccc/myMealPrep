@@ -25,6 +25,7 @@ public class MealPlan implements Writable {
      */
     public void addMeal(Meal meal) {
         mealList.add(meal);
+        EventLog.getInstance().logEvent(new Event("Meal added to the meal plan."));
     }
 
     /*
@@ -33,6 +34,7 @@ public class MealPlan implements Writable {
      */
     public void removeMeal(Meal meal) {
         mealList.remove(meal);
+        EventLog.getInstance().logEvent(new Event("Meal removed from the meal plan."));
     }
 
 
@@ -76,5 +78,12 @@ public class MealPlan implements Writable {
             jsonArray.put(t.toJson());
         }
         return jsonArray;
+    }
+
+    //EFFECTS: prints the events from the event log
+    public void logPrinter(EventLog eventLog) {
+        for (Event e : eventLog) {
+            System.out.println(e.getDescription());
+        }
     }
 }
