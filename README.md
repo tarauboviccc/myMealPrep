@@ -28,3 +28,30 @@ shopping as well as reduce not needed purchases, which would also affect food wa
 - You can save the state of my application by clicking button save my meal plan
 - You can reload the state of my application by clicking button load my meal plan
 
+# Phase 4, Task 2
+
+When a user is added, an event with description meal added to meal plan is added to the EventLog,
+and when a meal is removed an event with description meal is removed from the meal plan is added to the EventLog. 
+If no meals are added or removed, then the EventLog is empty.
+
+For example: 
+If meal is added and then removed the output is as follows once the application closes:
+
+Meal added to the meal plan
+Meal removed from the meal plan
+
+# Phase 4, Task 3
+
+Refactoring I would do to improve the design of my program:
+
+- deleting the MyMealPrepApp class and transfer some additional methods to GUI class, 
+since MyMealPrepApp is not being used anymore. 
+- merging addListener and addGListener in GUI class. They're adding different types of objects to the list of objects,
+but they have the similar behaviour. So, that code repetition can be reduced with a single function describing 
+that behaviour.
+- merging removeListener and removeMealListener in GUI class. They're removing different types of objects to the list of objects,
+  but they have the similar behaviour. So, that code repetition can be reduced with a single function describing
+  that behaviour.
+- mealPlanDisplay and groceryListDisplay background, foreground, and font setup are implemented in ActionListener's that
+don't have purpose of that behavior, so making separate listener / function for that other than having two types of
+behavior in one function would improve the overall design. 
