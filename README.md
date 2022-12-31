@@ -20,7 +20,7 @@ shopping as well as reduce not needed purchases, which would also affect food wa
   <li>As a user, I want to be able to be able to load my meal list from file </li>
 </ul>
 
-# Instructions for Grader
+# Instructions 
 
 - You can generate the first required event related to adding Xs to a Y by clicking button add Meal
 - You can generate the second required event related to adding Xs to a Y by clicking button remove meal from meal plan.
@@ -49,7 +49,8 @@ since MyMealPrepApp is not being used anymore.
 - merging addListener and addGListener in GUI class. They're adding different types of objects to the list of objects,
 but they have the similar behaviour. So, that code repetition can be reduced with a single function describing 
 that behaviour.
-- merging removeListener and removeMealListener in GUI class. They're removing different types of objects to the list of objects,
+- merging removeListener and removeMealListener in GUI class. They're removing different types of objects to the list of
+objects,
   but they have the similar behaviour. So, that code repetition can be reduced with a single function describing
   that behaviour.
 - mealPlanDisplay and groceryListDisplay background, foreground, and font setup are implemented in ActionListener's that
