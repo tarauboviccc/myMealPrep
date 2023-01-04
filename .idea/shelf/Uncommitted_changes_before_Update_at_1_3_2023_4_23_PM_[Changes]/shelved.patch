@@ -1,0 +1,19 @@
+Index: src/main/model/GroceryList.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\n\r\nimport org.json.JSONArray;\r\nimport org.json.JSONObject;\r\n\r\nimport persistence.Writable;\r\nimport java.util.*;\r\n\r\n// Represents a grocery list containing number of groceries and list of those groceries\r\n// the list of the groceries is formed from adding each of meal's list of ingredients\r\npublic class GroceryList {\r\n    private int numberOfGroceries;                       //number of groceries\r\n    private List<String> groceriesList;                  // list of groceries\r\n\r\n    /*\r\n     * EFFECTS: groceriesList is created and set to empty list;\r\n     *          number of groceries is set to 0\r\n     */\r\n    public GroceryList() {\r\n        groceriesList = new ArrayList<>();\r\n        numberOfGroceries = 0;\r\n    }\r\n\r\n    /*\r\n     * REQUIRES: grocery is a non-zero String\r\n     * MODIFIES: this\r\n     * EFFECTS: grocery in the grocery list that is equal to\r\n     *          the user's String input is removed from the groceries list\r\n     *          number of groceries also decreased for 1 because one grocery is removed\r\n     */\r\n    public void removeGrocery(String grocery) {\r\n        groceriesList.remove(grocery);\r\n        numberOfGroceries--;\r\n    }\r\n\r\n    /*\r\n     * REQUIRES: grocery is a non-zero String\r\n     * MODIFIES: this\r\n     * EFFECTS: user's String input is added from the groceries list\r\n     *          number of groceries increased for 1 because one grocery is added\r\n     */\r\n    public void addGrocery(String grocery) {\r\n        groceriesList.add(grocery);\r\n        numberOfGroceries++;\r\n    }\r\n\r\n    /*\r\n     * REQUIRES: numberOfGroceries is not 0\r\n     *           groceries is a non-empty list\r\n     * MODIFIES: this\r\n     * EFFECTS: adds list of meal's ingredients to the groceriesList\r\n     *          increases numberOfGroceries by the amount of numberOfIngredients\r\n     */\r\n    public void addGrocery(int numberOfIngredients, List<String> listOfIngredients) {\r\n        this.numberOfGroceries += numberOfIngredients;\r\n        for (int i = 0; i < numberOfIngredients; i++) {\r\n            groceriesList.add(listOfIngredients.get(i));\r\n        }\r\n    }\r\n\r\n    /*\r\n     * EFFECTS: returns a list of organized strings of the groceries\r\n     */\r\n    public List<String> printGroceryList() {\r\n        List<String> tempPrint = new ArrayList<>();\r\n\r\n        for (int i = 0; i < getNumberOfGroceries(); i++) {\r\n            tempPrint.add(\"Groceries\" + \" [\" + i + \"]: \" + getGroceries().get(i));\r\n        }\r\n\r\n        return tempPrint;\r\n    }\r\n\r\n    public int getNumberOfGroceries() {\r\n        return numberOfGroceries;\r\n    }\r\n\r\n    public List<String> getGroceries() {\r\n        return groceriesList;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/model/GroceryList.java b/src/main/model/GroceryList.java
+--- a/src/main/model/GroceryList.java	(revision 983f7fa6cf3bd928e8c6b1e75f7db1857a247116)
++++ b/src/main/model/GroceryList.java	(date 1672446976363)
+@@ -30,7 +30,7 @@
+      */
+     public void removeGrocery(String grocery) {
+         groceriesList.remove(grocery);
+-        numberOfGroceries--;
++        numberOfGroceries -= 1;
+     }
+ 
+     /*
